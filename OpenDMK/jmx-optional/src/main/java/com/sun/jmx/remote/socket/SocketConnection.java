@@ -52,14 +52,13 @@ package com.sun.jmx.remote.socket;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
-import java.io.InputStream;
-
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.ObjectStreamClass;
 import java.io.OutputStream;
-import java.net.InetAddress;
+import java.net.InetSocketAddress;
 import java.net.Socket;
 import java.security.Principal;
 import java.util.Iterator;
@@ -67,9 +66,7 @@ import java.util.Map;
 import java.util.Set;
 
 import javax.management.remote.JMXConnectorFactory;
-import javax.management.remote.JMXServiceURL;
 import javax.management.remote.generic.MessageConnection;
-
 import javax.management.remote.message.Message;
 import javax.security.auth.Subject;
 
@@ -131,7 +128,9 @@ public class SocketConnection implements SocketConnectionIf, MessageConnection {
 		stateLock.notifyAll();
 
 		if (sock == null) {
-		    sock = new Socket(addr, port);
+		    sock = new Socket();
+		    sock.setSoTimeout(DefaultConfig.getSocketSoTimeout(env));
+			sock.connect(new InetSocketAddress(addr, port), DefaultConfig.getSocketConnectTimeout(env));
 		}
 
 		replaceStreams(sock.getInputStream(), sock.getOutputStream());
@@ -165,7 +164,9 @@ public class SocketConnection implements SocketConnectionIf, MessageConnection {
 		state = CONNECTING;
 		stateLock.notifyAll();
 
-		sock = new Socket(addr, port);
+	    sock = new Socket();
+	    sock.setSoTimeout(DefaultConfig.getSocketSoTimeout(env));
+		sock.connect(new InetSocketAddress(addr, port), DefaultConfig.getSocketConnectTimeout(env));
 		replaceStreams(sock.getInputStream(), sock.getOutputStream());
 
 		state = CONNECTED;

@@ -114,7 +114,20 @@ public class DefaultConfig {
 	return EnvHelp.getIntegerAttribute(env, REQUEST_WAITING_TIME,
 					   Long.MAX_VALUE, 0, Long.MAX_VALUE);
     }
+    
+    public static final String SOCKET_CONNECT_TIMEOUT = "jmx.remote.socket.connect.timeout";
 
+    public static int getSocketConnectTimeout(Map env) {
+	return (int) EnvHelp.getIntegerAttribute(env, SOCKET_CONNECT_TIMEOUT,
+					   0, 0, Integer.MAX_VALUE);
+    }
+    
+    public static final String SOCKET_SO_TIMEOUT = "jmx.remote.socket.so.timeout";
+
+    public static int getSocketSoTimeout(Map env) {
+	return (int) EnvHelp.getIntegerAttribute(env, SOCKET_SO_TIMEOUT,
+					   0, 0, Integer.MAX_VALUE);
+    }
 
     /**
      * <p>Name of the attribute that specifies the timeout in
