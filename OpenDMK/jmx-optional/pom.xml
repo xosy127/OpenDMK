@@ -9,7 +9,7 @@
   </parent>
   <groupId>com.sun.jdmk</groupId>
   <artifactId>jmx-optional</artifactId>
-  <version>1.0-b02-SNAPSHOT</version>
+  <version>1.0-b02-sy-1.0</version>
   <name>jmx-optional</name>
   <url>http://maven.apache.org</url>
   
