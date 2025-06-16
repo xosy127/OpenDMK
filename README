@@ -7,3 +7,4 @@ sy
 ---------
 2025-06-15 socket timeout 관련하여 기능 추가
  - jmxmp 연결하는 과정에서 서버측 장애 발생시 무한 대기하는 현상을 해소하기 위한 기능 추가
+ - jmx-optional 프로젝트만 수정 후 빌드하여 기존 jmxremote_optional.jar를 대체함.
