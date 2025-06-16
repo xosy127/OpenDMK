@@ -1,2 +1,9 @@
+original (nickman)
+---------
 This project is intended to provide a mavenized build of the OpenDMK (hosted at http://opendmk.java.net/).
 The code is released under and governed by either the GNU General Public License, Version 2 only (GPL) or the Common Development and Distribution License (CDDL). 
+---------
+sy 
+---------
+2025-06-15 socket timeout 관련하여 기능 추가
+ - jmxmp 연결하는 과정에서 서버측 장애 발생시 무한 대기하는 현상을 해소하기 위한 기능 추가
